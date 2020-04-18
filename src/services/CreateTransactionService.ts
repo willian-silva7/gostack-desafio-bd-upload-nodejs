@@ -32,7 +32,7 @@ class CreateTransactionService {
       throw new AppError('Insuficient Balance');
     }
 
-    const transaction = transactionRepository.create({
+    const transaction = await transactionRepository.create({
       title,
       value,
       type,
@@ -41,8 +41,6 @@ class CreateTransactionService {
         title: checkedCategory.title,
       },
     });
-
-    console.log(transaction);
 
     await transactionRepository.save(transaction);
 
