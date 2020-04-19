@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import { getCustomRepository } from 'typeorm';
-
 import multer from 'multer';
 import TransactionsRepository from '../repositories/TransactionsRepository';
 import CreateTransactionService from '../services/CreateTransactionService';
@@ -54,8 +53,7 @@ transactionsRouter.post(
   upload.single('file'),
   async (request, response) => {
     const uploadService = new ImportTransactionsService();
-    console.log('chegou aqui');
-    const transactions = uploadService.execute(request.file.filename);
+    const transactions = await uploadService.execute(request.file.path);
     return response.json(transactions);
   },
 );

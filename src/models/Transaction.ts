@@ -5,6 +5,7 @@ import {
   JoinColumn,
   ManyToOne,
   CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import Category from './Category';
 
@@ -29,7 +30,7 @@ class Transaction {
   @CreateDateColumn()
   created_at: Date;
 
-  @CreateDateColumn()
+  @UpdateDateColumn()
   updated_at: Date;
 }
 
