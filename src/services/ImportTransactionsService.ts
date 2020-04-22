@@ -39,7 +39,7 @@ class ImportTransactionsService {
 
     const existenCategories = await categoriesRepository.find({
       where: {
-        title: In(categories),
+        title: In([categories]),
       },
     });
 

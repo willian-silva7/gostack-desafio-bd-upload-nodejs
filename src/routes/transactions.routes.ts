@@ -14,15 +14,15 @@ transactionsRouter.get('/', async (request, response) => {
   const transactionRepository = getCustomRepository(TransactionsRepository);
   const transactions = await transactionRepository.find({
     relations: ['category'],
-    select: ['id', 'title', 'value', 'type', 'category'],
+    // select: ['id', 'title', 'value', 'type', 'category'],
   });
 
-  transactions.forEach(transaction => {
-    delete transaction.category.created_at;
-    delete transaction.category.updated_at;
-  });
-  const getBalance = await transactionRepository.getBalance();
-  return response.json({ transactions, getBalance });
+  // transactions.forEach(transaction => {
+  //   delete transaction.category.created_at;
+  //   delete transaction.category.updated_at;
+  // });
+  const balance = await transactionRepository.getBalance();
+  return response.json({ transactions, balance });
 });
 
 transactionsRouter.post('/', async (request, response) => {

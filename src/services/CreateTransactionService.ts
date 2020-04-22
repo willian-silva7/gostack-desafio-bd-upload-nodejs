@@ -41,7 +41,7 @@ class CreateTransactionService {
         title: checkedCategory.title,
       },
     });
-    console.log(transaction);
+
     await transactionRepository.save(transaction);
 
     return transaction;
